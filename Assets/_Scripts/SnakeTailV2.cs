@@ -11,6 +11,7 @@ public class SnakeTailV2 : MonoBehaviour
     public Text TailLength;
     public int SnakeLength;
     public int StartLength;
+    public UI_manager UI_Manager;
 
 
     private List<Transform> snakeCircles = new List<Transform>();
@@ -21,7 +22,6 @@ public class SnakeTailV2 : MonoBehaviour
         SnakeLength = 0;
         TailLength.text = SnakeLength.ToString();
         positions.Add(SnakeHead.position);
-
         TailsAdd(StartLength);
     }
 
@@ -56,7 +56,7 @@ public class SnakeTailV2 : MonoBehaviour
 
     public void Die()
     {
-        throw new NotImplementedException();
+       
     }
 
     public void TailsAdd(int tailcount)

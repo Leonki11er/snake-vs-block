@@ -31,7 +31,6 @@ public class Player : MonoBehaviour
         {
             Vector3 delta = Input.mousePosition - _previousMousePosition;
             snakeHead.transform.position = snakeHead.transform.position + new Vector3(delta.x * _sensitivity, 0,  0);
-
             if (snakeHead.transform.position.x <= -2.34) snakeHead.transform.position = new Vector3(-2.34f, 0.7f, snakeHead.transform.position.z);
             if (snakeHead.transform.position.x >= 2.34) snakeHead.transform.position = new Vector3(2.34f, 0.7f, snakeHead.transform.position.z);
         }

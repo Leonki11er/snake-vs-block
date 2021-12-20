@@ -25,8 +25,11 @@ public class Block : MonoBehaviour
 
         if (!collision.collider.TryGetComponent(out SnakeTailV2 snakeTailV2)) return;
         if (snakeTailV2.SnakeLength == 0)
+        {
             snakeTailV2.Die();
             return;
+        }
+            
         StartCoroutine(DamageTake(snakeTailV2));
     }
 
@@ -37,7 +40,7 @@ public class Block : MonoBehaviour
         _blockMass.text = BlockMass.ToString();
         snakeTailV2.TailRemove();
         if(BlockMass<=0) Destroy(gameObject);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.8f);
 
     }
 }
