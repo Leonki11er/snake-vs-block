@@ -15,9 +15,9 @@ public class Block : MonoBehaviour
         var renderer = GetComponent<MeshRenderer>();
         _material = Instantiate(renderer.sharedMaterial);
         renderer.material = _material;
-        float blockmass = BlockMass / 100f;
-        _material.SetFloat("_blockmass", blockmass);
-        _blockMass.text = BlockMass.ToString();
+        //float blockmass = BlockMass / 100f;
+        //_material.SetFloat("_blockmass", blockmass);
+        //_blockMass.text = BlockMass.ToString();
     }
 
     private void OnCollisionStay(Collision collision)
@@ -33,11 +33,24 @@ public class Block : MonoBehaviour
         StartCoroutine(DamageTake(snakeTailV2));
     }
 
+    public void SetMass(int mass) 
+    {
+        float blockmass = mass / 100f;
+        _material.SetFloat("_blockmass", blockmass);
+        BlockMass = mass;
+        _blockMass.text = BlockMass.ToString();
+
+    }
+
+
     private IEnumerator DamageTake(SnakeTailV2 snakeTailV2)
     {
 
         BlockMass--;
         _blockMass.text = BlockMass.ToString();
+        float blockmass = BlockMass / 100f;
+        _material.SetFloat("_blockmass", blockmass);
+
         snakeTailV2.TailRemove();
         if(BlockMass<=0) Destroy(gameObject);
         yield return new WaitForSeconds(0.8f);

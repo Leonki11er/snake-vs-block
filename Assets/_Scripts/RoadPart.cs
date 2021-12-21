@@ -22,6 +22,7 @@ public class RoadPart : MonoBehaviour
 
     public void SpawnLines()
     {
+        Debug.Log("SpawnLines");
         for (int i = 0; i < 5; i++)
         {
             float offset = i * 4 - 9;
@@ -33,7 +34,15 @@ public class RoadPart : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            GameObject block = Instantiate(Block, new Vector3(transform.position.x +(i - 2), transform.position.y+Yoffset, transform.position.z+ Zpos), Quaternion.identity, gameObject.transform);
+            int randomfactor = Random.Range(0, 100); 
+            if (randomfactor > 30)
+            {
+                GameObject block = Instantiate(Block, new Vector3(transform.position.x + (i - 2), transform.position.y + Yoffset, transform.position.z + Zpos), Quaternion.identity);
+                block.TryGetComponent(out Block _block);
+                int randomMass = Random.Range(2, 100);
+                _block.SetMass(randomMass);
+            }
+            
         }
     }
     

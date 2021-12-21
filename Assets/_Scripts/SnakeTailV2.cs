@@ -91,7 +91,7 @@ public class SnakeTailV2 : MonoBehaviour
         if (snakeCircles.Count == 0) return;
         Destroy(snakeCircles[0].gameObject);
         snakeCircles.RemoveAt(0);
-        positions.RemoveAt(1);
+        positions.RemoveAt(0);
         SnakeLength--;
         TailLength.text = SnakeLength.ToString();
     }
