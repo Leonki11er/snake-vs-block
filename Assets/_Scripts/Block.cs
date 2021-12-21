@@ -30,7 +30,7 @@ public class Block : MonoBehaviour
             snakeTailV2.Die();
             return;
         }
-            
+        Invoke("DmgTake", 1f);
         StartCoroutine(DamageTake(snakeTailV2));
     }
 
@@ -43,10 +43,12 @@ public class Block : MonoBehaviour
 
     }
 
+    
 
     private IEnumerator DamageTake(SnakeTailV2 snakeTailV2)
     {
 
+        yield return new WaitForSeconds(0.8f);
         BlockMass--;
         _blockMass.text = BlockMass.ToString();
         float blockmass = BlockMass / 100f;
@@ -54,7 +56,5 @@ public class Block : MonoBehaviour
 
         snakeTailV2.TailRemove();
         if(BlockMass<=0) Destroy(gameObject);
-        yield return new WaitForSeconds(0.8f);
-
     }
 }
