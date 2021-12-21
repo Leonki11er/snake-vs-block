@@ -29,7 +29,7 @@ public class SnakeTailV2 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            TailAdd();
+            TailsAdd(1);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
