@@ -59,10 +59,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Road_Part: {fileID: 3027498021143016458}
-  Block: {fileID: 1901002852258844507, guid: f0bb96202251d544d879c40a0bb2d3ea, type: 3}
+  RoadFinish: {fileID: 3027498021143016458, guid: 08bb2e66f84e0b440a875490cce216bc, type: 3}
+  Block: {fileID: 2299502532543592034, guid: 1113847707560394f97deee9d732c669, type: 3}
   Egg: {fileID: 2665658185940293933, guid: cd9cd4ef9f91f5d43afe4d5095cb3cc3, type: 3}
   Yoffset: 0.65
-  Zpos: 0
+  WallPool:
+  - {fileID: 7586616017063125726, guid: 765f2925af541d24d9c93370a12c9d91, type: 3}
+  - {fileID: 8075085251354726072, guid: 4d399e181ac26d044b88175b80c52b54, type: 3}
+  - {fileID: 1812133565525193444, guid: 6feb1bccfff1d7e43813eb031dd1b046, type: 3}
+  - {fileID: 5609896778957837302, guid: 71f409597fecddc4fa24253a1964c971, type: 3}
+  - {fileID: 2842066282063404817, guid: 814d937d0c84b9a458128158742b2b03, type: 3}
+  - {fileID: 254860654703400641, guid: 4ee3d35748e3f4940b179b95e31036a4, type: 3}
   Zoffset: 20
 --- !u!1001 &1618444180493965169
 PrefabInstance:

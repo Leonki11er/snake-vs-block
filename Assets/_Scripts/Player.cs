@@ -22,18 +22,22 @@ public class Player : MonoBehaviour
     void Update()
     {
         MouseMove();
-        _rigidbody.velocity = new Vector3(0, 0, speed);
     }
 
     private void MouseMove()
     {
+        float xSpeed = 0;
         if (Input.GetMouseButton(0))
         {
             Vector3 delta = Input.mousePosition - _previousMousePosition;
-            snakeHead.transform.position = snakeHead.transform.position + new Vector3(delta.x * _sensitivity, 0,  0);
-            if (snakeHead.transform.position.x <= -2.34) snakeHead.transform.position = new Vector3(-2.34f, 0.7f, snakeHead.transform.position.z);
-            if (snakeHead.transform.position.x >= 2.34) snakeHead.transform.position = new Vector3(2.34f, 0.7f, snakeHead.transform.position.z);
+            xSpeed = delta.x * _sensitivity;
         }
         _previousMousePosition = Input.mousePosition;
+        _rigidbody.velocity = new Vector3(xSpeed, 0, speed);
+    }
+
+    public void StopMoving()
+    {
+        _rigidbody.velocity = new Vector3(0, 0, 0);
     }
 }
