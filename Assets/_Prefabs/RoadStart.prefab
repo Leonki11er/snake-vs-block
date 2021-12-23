@@ -58,6 +58,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0158b1b93651c4f9a12e3a48e4d4a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Road_Part: {fileID: 3027498021143016458, guid: 7cb91ebf78cf22549bb1cd44bb8f36db, type: 3}
+  Egg: {fileID: 2665658185940293933, guid: cd9cd4ef9f91f5d43afe4d5095cb3cc3, type: 3}
+  Zoffset: 20
+  Yoffset: 0.65
 --- !u!1001 &1618444180493965169
 PrefabInstance:
   m_ObjectHideFlags: 0

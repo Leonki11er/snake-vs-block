@@ -5,6 +5,7 @@ using UnityEngine;
 public class RoadPart : MonoBehaviour
 {
     public GameObject Road_Part;
+    public GameObject RoadFinish;
     public GameObject Block;
     public GameObject Egg;
     public float Yoffset;
@@ -13,6 +14,12 @@ public class RoadPart : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.TryGetComponent(out SnakeTailV2 snakeTailV2)) return;
+        bool isEnd = snakeTailV2.PassRoad();
+        if (isEnd)
+        {
+            GameObject roadend = Instantiate(RoadFinish, new Vector3(transform.position.x, transform.position.y, transform.position.z + Zoffset), Quaternion.identity);
+            return;
+        }
         GameObject roadpart = Instantiate(Road_Part, new Vector3(transform.position.x, transform.position.y, transform.position.z + Zoffset), Quaternion.identity);
         roadpart.TryGetComponent(out RoadPart _roadpart);
         _roadpart.SpawnBlockLines();

@@ -8,11 +8,14 @@ public class Egg : MonoBehaviour
     public int EggMass;
     [SerializeField]
     private Text _eggMass;
+    public GameObject EggPS;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.collider.TryGetComponent(out SnakeTailV2 snakeTailV2)) return;
         snakeTailV2.TailsAdd(EggMass);
+        snakeTailV2.EatSound();
+        GameObject egg = Instantiate(EggPS, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

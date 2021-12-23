@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Road_Part: {fileID: 3027498021143016458}
+  RoadFinish: {fileID: 3027498021143016458, guid: 08bb2e66f84e0b440a875490cce216bc, type: 3}
   Block: {fileID: 2299502532543592034, guid: 1113847707560394f97deee9d732c669, type: 3}
   Egg: {fileID: 2665658185940293933, guid: cd9cd4ef9f91f5d43afe4d5095cb3cc3, type: 3}
   Yoffset: 0.65

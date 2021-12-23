@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStatement : MonoBehaviour
 {
     public GameObject Player;
     public UI_manager UI_Manager;
+    public int StartLength;
+    
     public enum State
     {
         Playing,
@@ -14,14 +17,14 @@ public class GameStatement : MonoBehaviour
         Pause,
     }
     public State CurrentState { get; private set; }
-
-    private const string LevelIndexKey = "LevelIndex";
-    public int LevelIndex
+    public int LevelLength;
+    private const string SnakeLength = "SnakeLength";
+    public int Snake_Length
     {
-        get => PlayerPrefs.GetInt(LevelIndexKey, 0);
+        get => PlayerPrefs.GetInt(SnakeLength, 0);
         private set
         {
-            PlayerPrefs.SetInt(LevelIndexKey, value);
+            PlayerPrefs.SetInt(SnakeLength, value);
             PlayerPrefs.Save();
         }
     }
@@ -48,21 +51,16 @@ public class GameStatement : MonoBehaviour
         }
     }
 
-    //private void Awake()
-    //{
-    //    Score = 0;
-    //    UI_Manager.ActivePanel(UI_Manager.MainMenu, true);
-    //    UI_Manager.SetText(UI_Manager.BestScoreMM, BestScore);
-    //    if(Score == 0) UI_Manager.ResumeGameButton.gameObject.SetActive(false);
-    //    Debug.Log(Score);
-    //    Player.SetActive(false);
-    //}
-
-    public void buttonSwitch()
+    private void Awake()
     {
-        UI_Manager.ResumeGameButton.gameObject.SetActive(true);
+        UI_Manager.SetText(UI_Manager.CurrentScore, Score);
     }
 
+    public void SetSnakeLength(int mass)
+    {
+        Snake_Length = mass;
+    }
+    
     public void OnPlayerDied()
     {
         if (CurrentState != State.Playing) return;
@@ -71,6 +69,7 @@ public class GameStatement : MonoBehaviour
         UI_Manager.SetText(UI_Manager.ScoreLP, Score);
         UI_Manager.SetText(UI_Manager.BestScoreLP, BestScore);
         UI_Manager.ActivePanel(UI_Manager.LosePanel,true);
+        Snake_Length = StartLength;
         Score = 0;
     }
 
@@ -82,7 +81,6 @@ public class GameStatement : MonoBehaviour
         UI_Manager.SetText(UI_Manager.ScoreWP, Score);
         UI_Manager.SetText(UI_Manager.BestScoreWP, BestScore);
         UI_Manager.ActivePanel(UI_Manager.WinPanel,true);
-        LevelIndex++;
     }
 
     public void PauseGame()
@@ -102,5 +100,36 @@ public class GameStatement : MonoBehaviour
         Player.SetActive(true);
         Time.timeScale = 1f;
         UI_Manager.ActivePanel(UI_Manager.PausePanel, false);
+    }
+
+    public void NewGame()
+    {
+        Score = 0;
+        ReloadLevel();
+    }
+
+    public void ScoreIncrement()
+    {
+        Score++;
+        if (BestScore < Score)
+        {
+            BestScore = Score;
+        }
+        UI_Manager.SetText(UI_Manager.CurrentScore, Score);
+    }
+    public void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void QuitApp()
+    {
+        Application.Quit();
+    }
+
+    public void OnApplicationQuit()
+    {
+        Score = 0;
+        Snake_Length = StartLength;
     }
 }

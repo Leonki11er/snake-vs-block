@@ -35,4 +35,9 @@ public class Player : MonoBehaviour
         _previousMousePosition = Input.mousePosition;
         _rigidbody.velocity = new Vector3(xSpeed, 0, speed);
     }
+
+    public void StopMoving()
+    {
+        _rigidbody.velocity = new Vector3(0, 0, 0);
+    }
 }
